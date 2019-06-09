@@ -1,0 +1,43 @@
+<!--<div>-->
+<!--  Username : <input type="text" name="username" [(ngModel)]="username">-->
+
+<!--  Password : <input type="password" name="password" [(ngModel)]="password">-->
+<!--  <br><br>-->
+<!--  <button (click)=handleLogin()> Login</button>-->
+<!--</div>-->
+
+<!--<div>-->
+<!--  <p *ngIf="after"> {{error}} </p>-->
+<!--</div>-->
+
+<div class="container">
+  <form class="form-signin">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+
+    <h1 class="h3 mb-3 font-weight-normal"> Strange Todo App </h1>
+    <p>Manage your todo list with Strange todos with ease and comfort </p>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text" class="form-control" placeholder="Username" required autofocus  name="username" [(ngModel)]="username">
+    <br>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" class="form-control" placeholder="Password" required name="password" [(ngModel)]="password">
+  </div>
+    <br>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-dark btn-block" (click)="handleLogin()"> Sign In </button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
+  <div class="alert alert-dark" *ngIf="after">
+    <strong>Error </strong> Invalid login credentials
+  </div>
+</form>
+</div>
+
