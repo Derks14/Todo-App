@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {TodoDataService} from '../service/data/todo-data.service';
+import {HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-list-todos',
@@ -6,20 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-todos.component.css']
 })
 export class ListTodosComponent implements OnInit {
-  todos = [
-    new Todo(1, 'learn statistics this evening', false, new Date()),
-    new Todo(2, 'Then continue with the angular', false, new Date()),
-    new Todo(3, 'Sleep for 5 hours', false, new Date()),
-    new Todo(4, 'Go for tomorrows Micro electronics class', false, new Date()),
-    new Todo(5, 'Don\'t skip the statistics class', false, new Date()),
-    new Todo(6, 'Don\'t forget to learn on the Angular', false, new Date()),
-  ];
-
-  constructor() { }
-
+  todos = [];
+  message: string;
+  username: string;
+  constructor(private getTodos: TodoDataService) { }
   ngOnInit() {
+    this.retrieveTodosForClient();
   }
-
+  retrieveTodosForClient() {
+    this.getTodos.retrieveTodosFromServer(this.username).subscribe(
+      response => {
+        this.todos = response;
+        console.log(response);
+      }
+    );
+  }
+  deleteTodosForClient(username, id) {
+    this.getTodos.deleteTodosFromServer('Derrick', id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Todo ${id} deleted successfully`;
+        this.retrieveTodosForClient();
+      }
+    );
+  }
 }
 
 export class Todo {

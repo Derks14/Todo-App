@@ -1,11 +1,24 @@
-<H1>Welcome</H1>
-
 <div class="container">
-  Welcome {{name}} to your homeScreen manage your todos <a routerLink="/todos">here</a>
+  <h1 style="font-family: Ubuntu">Akwaaba</h1>
+</div>
+
+<div class="container" *ngIf="errorOne">
+  <div class="alert alert-dark">
+    <strong>Error </strong> {{errorFromService}}
+  </div>
+  <hr>
 </div>
 
 <div class="container">
-  Click here to get some customized todos
-  <button (click)="getWelcomeMessage()"  class="btn btn-success"> Get customized Message</button>
+  <p>Welcome {{name}} to your homeScreen manage your todos <a routerLink="/todos">here</a></p>
 </div>
-a
+
+<div class="container">
+  <p>Click here to get some customized todos </p>
+  <button (click)="getWelcomeMessageWithParameter()"  class="btn btn-success"> Get customized Message</button>
+</div>
+<br>
+<div class="container">
+<H2 style="font-family: Ubuntu,serif">Your message from spring</H2><p>{{messageFromService}}</p>
+</div>
+<br>
