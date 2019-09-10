@@ -25,4 +25,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['welcome', this.username]);
     }
   }
+  handlebasicAuthLogin() {
+
+  }
 }

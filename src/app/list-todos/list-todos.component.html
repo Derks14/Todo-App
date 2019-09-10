@@ -6,15 +6,26 @@
 <br>
 <div class="container">
   <table class="table">
-    <thead> <tr>   <th>Id</th>  <th>Description</th> <th>Date added</th> <th>Completed</th><th>Actions</th></tr> </thead>
+    <thead> <tr>   <th>Id</th>
+      <th>Description</th>
+      <th>Date added</th>
+      <th>Completed</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr> </thead>
     <tbody>
     <tr *ngFor="let todo of todos">
       <td>{{todo.id}}</td>
       <td>{{todo.description}}</td>
       <td>{{todo.targetDate | date}}</td>
       <td>{{todo.done}}</td>
-      <td><button class="btn btn-lg btn-dark btn-block" (click)="deleteTodosForClient(username, todo.id)"> Delete </button></td>
+      <td><button class="btn btn-success " (click)="updateTodosForClient(todo.id)"> Update</button></td>
+      <td><button class="btn btn-dark" (click)="deleteTodosForClient(username, todo.id)"> Delete </button></td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<div class="row">
+  <button class="btn btn-success" (click)="saveTodoForClient()"> ADD </button>
 </div>

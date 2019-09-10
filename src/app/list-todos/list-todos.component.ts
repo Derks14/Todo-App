@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoDataService} from '../service/data/todo-data.service';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ListTodosComponent implements OnInit {
   todos = [];
   message: string;
   username: string;
-  constructor(private getTodos: TodoDataService) { }
+  constructor(private getTodos: TodoDataService, private router: Router ) { }
   ngOnInit() {
     this.retrieveTodosForClient();
   }
@@ -33,7 +34,15 @@ export class ListTodosComponent implements OnInit {
       }
     );
   }
-}
+  updateTodosForClient(id) {
+    console.log(`Update made on todo ${id}`);
+    this.router.navigate(['todos', id]);
+  }
+  saveTodoForClient() {
+    this.router.navigate(['todos', -1]);
+    console.log('saving new Todo');
+  }
+ }
 
 export class Todo {
   constructor(
