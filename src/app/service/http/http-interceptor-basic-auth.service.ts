@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BasicAuthenticationServiceService} from '../basic-authentication-service.service';
+import {JwtAuthenticationService} from '../jwt-authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpInterceptorBasicAuthService implements HttpInterceptor {
 
-  constructor(private basicAuth: BasicAuthenticationServiceService) { }
+  constructor(private basicAuth: BasicAuthenticationServiceService, private jwtAuthenticate: JwtAuthenticationService) { }
 // this function was from the HttpInterceptor class
   intercept(request: HttpRequest<any>, next: HttpHandler)  {
     // let password = 'killer';
@@ -22,6 +23,14 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor {
         }
       });
     }
+    if (this.jwtAuthenticate.getAuthenticatedToken() && this.jwtAuthenticate.getAuthenticatedUser()) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: this.jwtAuthenticate.getAuthenticatedToken()
+        }
+        });
+    }
     return next.handle(request);
   }
+
 }

@@ -51,7 +51,12 @@ export class BasicAuthenticationServiceService {
     sessionStorage.removeItem(TOKEN);
     sessionStorage.removeItem(AUTHENTICATEUSER);
   }
+  retriveDishesFromServer() {
+    return this.http.get('http://localhost:3000/dishes');
+  }
+
 }
+
 
 export class AuthenticationBean {
   constructor(public message: string) { }

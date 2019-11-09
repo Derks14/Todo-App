@@ -33,8 +33,15 @@
       <input type="checkbox" value="remember"> Remember me
     </label>
   </div>
-<!--  <button class="btn btn-lg btn-dark btn-block" (click)="handleLogin()"> Sign In </button>-->
-  <button class="btn btn-lg btn-dark btn-block" (click)="handlebasicAuthLogin()"> Sign In </button>
+
+    <!--  <button class="btn btn-lg btn-dark btn-block" (click)="handleLogin()"> Sign In </button>-->
+    <!--  <button class="btn btn-lg btn-dark btn-block" (click)="handlebasicAuthLogin()"> Sign In </button>-->
+    <div>
+      <button class="btn btn-lg btn-dark btn-block" (click)="handleJWTAuthLogin()"> Sign In </button>
+    </div>
+    <div class="form-label-group">
+      <p>New Here <a routerLink="/register">create account</a></p>
+    </div>
   <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
   <div class="alert alert-dark" *ngIf="after">
     <strong>Error </strong> Invalid login credentials

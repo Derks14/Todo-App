@@ -5,7 +5,13 @@
 <div class="alert alert-dark" *ngIf="formElement.dirty && formElement.invalid">
   <strong>Empty textspace</strong>
 </div>
+
+
+
 <hr>
+
+
+
 <form (ngSubmit)="!formElement.invalid  && updateTodo()" #formElement=ngForm>
   <div class="container">
     <div class="container">

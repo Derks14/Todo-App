@@ -16,7 +16,6 @@ export class TodoDataService {
   deleteTodosFromServer(name: string, id: number) {
     return this.http.delete(`${API_URL}/users/${name}/todos/${id}`);
   }
-
   retrieveTodoFromServer(name: string, id: number) {
     return this.http.get<Todo>(`${API_URL}/users/${name}/todos/${id}`);
   }

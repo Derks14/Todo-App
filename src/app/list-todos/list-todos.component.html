@@ -15,7 +15,7 @@
     </tr> </thead>
     <tbody>
     <tr *ngFor="let todo of todos">
-      <td>{{todo.id}}</td>
+      <td>{{todo.id + 1}}</td>
       <td>{{todo.description}}</td>
       <td>{{todo.targetDate | date}}</td>
       <td>{{todo.done}}</td>

@@ -32,7 +32,6 @@ export class TodoComponent implements OnInit {
   updateTodo() {
     console.log('About to update todo');
     console.log(this.todo);
-    // tslint:disable-next-line:triple-equals
     if (this.id == -1) {
       console.log('new data');
       console.log(this.todo);
